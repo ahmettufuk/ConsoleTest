@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleTest.Facade
+namespace ConsoleTest.Strategy
 {
-    public interface INotificationFacade
+    public interface INotificationSender
     {
-        void SendNotification(NotificationModel model);
+        void Send(NotificationModel model);
     }
 }

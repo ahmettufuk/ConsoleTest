@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleTest.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace ConsoleTest
 {
     public interface INotification
     {
-        void Send(string message);
+        bool Send(NotificationModel  model);
     }
 }

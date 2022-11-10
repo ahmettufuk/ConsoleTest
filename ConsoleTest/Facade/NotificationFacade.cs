@@ -1,5 +1,6 @@
-﻿using ConsoleTest.Concrete;
-using ConsoleTest.Factory;
+﻿using ConsoleTest.Factory;
+using ConsoleTest.Model;
+using ConsoleTest.Strategy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +11,16 @@ namespace ConsoleTest.Facade
 {
     public class NotificationFacade : INotificationFacade
     {
-        private readonly INotificationFactory notificationFactory;
+        private readonly INotificationSender notificationSender;
 
-        public NotificationFacade(INotificationFactory notificationFactory)
+        public NotificationFacade(INotificationSender notificationSender)
         {
-            this.notificationFactory = notificationFactory;
-        }
+            this.notificationSender = notificationSender;
+        } 
 
-        public void SendNotification(string message)
+        public void SendNotification(NotificationModel model)
         {
-            var results = notificationFactory.Create();
-            
-            foreach (var result in results)
-            {
-                result.Send(message);
-            }
+            notificationSender.Send(model);
         }
     }
 }

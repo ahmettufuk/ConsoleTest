@@ -2,25 +2,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleTest.Decorator
 {
-    public class UpperDecorator : INotification
+    public class MultipleDecorator : INotification
     {
         private readonly INotification decoratedNotification;
+        private readonly int times;
 
-        public UpperDecorator(INotification decoratedNotification)
+        public MultipleDecorator(INotification decoratedNotification,int times)
         {
             this.decoratedNotification = decoratedNotification;
+            this.times = times;
         }
-
         public bool Send(NotificationModel model)
         {
-            return decoratedNotification.Send(new NotificationModel { Message = model.Message.ToUpper()});
+            
+               return decoratedNotification.Send(model);
+            
+
         }
-
-
     }
 }
